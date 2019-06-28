@@ -1,0 +1,2 @@
+[myswitches]
+sw2 ansible_host=172.16.2.20

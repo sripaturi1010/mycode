@@ -14,14 +14,17 @@ def retv_excel(par):
     return d
 
 def ping_router(hostname):
-    response = os.system("ping -c 1" + hostname)
+
+    response = os.system("ping -c 1 " + hostname)
+
     if response == 0:
         return True
     else:
         return False
+
 def interface_check(dev_type, dev_ip, dev_un, dev_pw):
     try:
-        open_connection = ConnectHandler(device_type=dev_type, ip=dev_ip, username=dev_name, password=dev_pw)
+        open_connection = ConnectHandler(device_type=dev_type, ip=dev_ip, username=dev_un, password=dev_pw)
         my_command = open_connection.send_command("show ip int brief")
     except:
         my_command = "** ISSUING COMMAND FAILED **"
@@ -30,7 +33,7 @@ def interface_check(dev_type, dev_ip, dev_un, dev_pw):
 
 def login_router(dev_type, dev_ip, dev_un, dev_pw):
     try:
-        open_connections = ConnectionHandler(device_type=dev_type, ip=dev_ip, username=dev_un, password=dev_pw)
+        open_connection = ConnectHandler(device_type=dev_type, ip=dev_ip, username=dev_un, password=dev_pw)
         return True
     except:
         return False
